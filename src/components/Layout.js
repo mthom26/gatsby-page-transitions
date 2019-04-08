@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Nav from './Nav';
 
@@ -6,10 +6,13 @@ import '../index.css';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <Fragment>
       <Nav />
-      {children}
-    </div>
+      <div className="layoutBackground"></div>
+      <div className="layout">
+        {children}
+      </div>
+    </Fragment>
   )
 };
 

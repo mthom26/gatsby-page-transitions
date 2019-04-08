@@ -22,10 +22,33 @@ a:visited {
 }
 
 .nav {
+  position: absolute;
+  top: 0;
+  width: 100vw;
   display: flex;
   justify-content: flex-end;
+  z-index: 1000;
+  /* border: 1px solid red; */
 }
 
 .navLink {
   padding: 0.8rem 1.5rem;
+}
+
+.layout {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* border: 1px solid greenyellow; */
+}
+
+.layoutBackground {
+  position: absolute;
+  background: url('./images/karina-carvalho-134501-unsplash.jpg');
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  /* border: 1px solid yellow; */
 }
