@@ -9,28 +9,27 @@ const Nav = () => {
         to="/"
         className="navLink"
         exit={{
-          length: 6.0,
+          length: 2.0,
           trigger: ({ node, e, exit, entry }) => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
-            console.log(item)
             return animejs({
               targets: [item],
-              duration: 3000,
-              translateX: ['0%', '10%'],
+              duration: 2000,
+              translateX: ['0%', '80%'],
               easing: 'easeInOutCubic'
             })
           }
         }}
         entry={{
-          delay: 3.0,
-          length: 6.0,
+          delay: 0.5,
+          length: 2.0,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
             return animejs({
               targets: [item],
-              duration: 3000,
-              translateX: ['-10%', '0%'],
+              duration: 2000,
+              translateX: ['-80%', '0%'],
               easing: 'easeInOutCubic'
             })
           }
