@@ -6,10 +6,35 @@ const getAnimDir = (e, item) => {
   // Returns the desired animation direction based on the nav and page numbers
   const navNum = e.target.id.split('-')[1];
   const pageNum = item.id.split('-')[1];
-  console.log(` Page ${pageNum} --> Nav ${navNum}`)
+  // console.log(` Page ${pageNum} --> Nav ${navNum}`)
   return pageNum > navNum
     ? 'right'
     : 'left';
+};
+
+const getAnim = (item, animDir, animType) => {
+  // Determine the translateX value of the animation based on animDir and
+  // whether the animation is an 'entry' or 'exit' and return the final
+  // animation
+  let animValue = [];
+
+  if(animType === 'exit') {
+    animValue = animDir === 'right'
+      ? ['0%', '80%']
+      : ['0%', '-80%'];
+  }
+  if(animType === 'entry') {
+    animValue = animDir === 'right'
+      ? ['-80%', '0%']
+      : ['80%', '0%'];
+  }
+
+  return animejs({
+    targets: [item],
+    duration: 2000,
+    translateX: animValue,
+    easing: 'easeInOutCubic'
+  });
 };
 
 const Nav = () => {
@@ -24,21 +49,11 @@ const Nav = () => {
           trigger: ({ node, e, exit, entry }) => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
-          
             const animDir = getAnimDir(e, item);
-            const animValue = animDir === 'right'
-              ? '80%'
-              : '-80%';
             // Set the state on the entry so the entering page knows the correct
             // animation direction
             entry.state = { direction: animDir };
-
-            return animejs({
-              targets: [item],
-              duration: 2000,
-              translateX: ['0%', animValue],
-              easing: 'easeInOutCubic'
-            })
+            return getAnim(item, animDir, 'exit');
           }
         }}
         entry={{
@@ -47,18 +62,9 @@ const Nav = () => {
           trigger: ({ node, e, exit, entry }) => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
-
+            // Get animation direction from state
             const animDir = entry.state.direction;
-            const animValue = animDir === 'right'
-              ? '-80%'
-              : '80%';
-            
-            return animejs({
-              targets: [item],
-              duration: 2000,
-              translateX: [animValue, '0%'],
-              easing: 'easeInOutCubic'
-            })
+            return getAnim(item, animDir, 'entry');
           }
         }}
       >
@@ -71,14 +77,10 @@ const Nav = () => {
         exit={{
           length: 2.0,
           trigger: ({ node, e, exit, entry }) => {
-            // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
-            return animejs({
-              targets: [item],
-              duration: 2000,
-              translateX: ['0%', '80%'],
-              easing: 'easeInOutCubic'
-            })
+            const animDir = getAnimDir(e, item);
+            entry.state = { direction: animDir };
+            return getAnim(item, animDir, 'exit');
           }
         }}
         entry={{
@@ -86,12 +88,8 @@ const Nav = () => {
           length: 2.0,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
-            return animejs({
-              targets: [item],
-              duration: 2000,
-              translateX: ['-80%', '0%'],
-              easing: 'easeInOutCubic'
-            })
+            const animDir = entry.state.direction;
+            return getAnim(item, animDir, 'entry');
           }
         }}
       >
@@ -104,14 +102,10 @@ const Nav = () => {
         exit={{
           length: 2.0,
           trigger: ({ node, e, exit, entry }) => {
-            // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
-            return animejs({
-              targets: [item],
-              duration: 2000,
-              translateX: ['0%', '80%'],
-              easing: 'easeInOutCubic'
-            })
+            const animDir = getAnimDir(e, item);
+            entry.state = { direction: animDir };
+            return getAnim(item, animDir, 'exit');
           }
         }}
         entry={{
@@ -119,12 +113,8 @@ const Nav = () => {
           length: 2.0,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
-            return animejs({
-              targets: [item],
-              duration: 2000,
-              translateX: ['-80%', '0%'],
-              easing: 'easeInOutCubic'
-            })
+            const animDir = entry.state.direction;
+            return getAnim(item, animDir, 'entry');
           }
         }}
       >
