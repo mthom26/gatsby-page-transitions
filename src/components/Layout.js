@@ -5,14 +5,14 @@ import Nav from './Nav';
 
 import '../index.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, id }) => {
   return (
     <Fragment>
       <TransitionPortal level="bottom">
         <div className="layoutBackground"></div>
       </TransitionPortal>
       <Nav />
-      <div className="layout">
+      <div id={id} className="layout">
         {children}
       </div>
     </Fragment>
