@@ -2,6 +2,9 @@ import React from 'react';
 import TransitionLink from 'gatsby-plugin-transition-link';
 import animejs from 'animejs';
 
+const TRANSITION_DELAY = 1.2;
+const TRANSITION_LEN = 1.2;
+
 const getAnimDir = (e, item) => {
   // Returns the desired animation direction based on the nav and page numbers
   const navNum = e.target.id.split('-')[1];
@@ -21,20 +24,20 @@ const getAnim = (item, animDir, animType) => {
 
   if(animType === 'exit') {
     translateValue = animDir === 'right'
-      ? ['0%', '80%']
-      : ['0%', '-80%'];
+      ? ['0%', '40%']
+      : ['0%', '-40%'];
     opacityValue = [1, 0];
   }
   if(animType === 'entry') {
     translateValue = animDir === 'right'
-      ? ['-80%', '0%']
-      : ['80%', '0%'];
+      ? ['-40%', '0%']
+      : ['40%', '0%'];
     opacityValue = [0, 1];
   }
 
   return animejs({
     targets: [item],
-    duration: 2000,
+    duration: 1200,
     translateX: translateValue,
     opacity: opacityValue,
     easing: 'easeInOutCubic'
@@ -49,7 +52,7 @@ const Nav = () => {
         id="nav-1"
         className="navLink"
         exit={{
-          length: 2.0,
+          length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
@@ -61,8 +64,8 @@ const Nav = () => {
           }
         }}
         entry={{
-          delay: 0.5,
-          length: 2.0,
+          delay: TRANSITION_DELAY,
+          length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
@@ -79,7 +82,7 @@ const Nav = () => {
         id="nav-2"
         className="navLink"
         exit={{
-          length: 2.0,
+          length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
             const animDir = getAnimDir(e, item);
@@ -88,8 +91,8 @@ const Nav = () => {
           }
         }}
         entry={{
-          delay: 0.5,
-          length: 2.0,
+          delay: TRANSITION_DELAY,
+          length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
             const animDir = entry.state.direction;
@@ -104,7 +107,7 @@ const Nav = () => {
         id="nav-3"
         className="navLink"
         exit={{
-          length: 2.0,
+          length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
             const animDir = getAnimDir(e, item);
@@ -113,8 +116,8 @@ const Nav = () => {
           }
         }}
         entry={{
-          delay: 0.5,
-          length: 2.0,
+          delay: TRANSITION_DELAY,
+          length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
             const animDir = entry.state.direction;
