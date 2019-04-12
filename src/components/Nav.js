@@ -16,23 +16,27 @@ const getAnim = (item, animDir, animType) => {
   // Determine the translateX value of the animation based on animDir and
   // whether the animation is an 'entry' or 'exit' and return the final
   // animation
-  let animValue = [];
+  let translateValue = [];
+  let opacityValue = [];
 
   if(animType === 'exit') {
-    animValue = animDir === 'right'
+    translateValue = animDir === 'right'
       ? ['0%', '80%']
       : ['0%', '-80%'];
+    opacityValue = [1, 0];
   }
   if(animType === 'entry') {
-    animValue = animDir === 'right'
+    translateValue = animDir === 'right'
       ? ['-80%', '0%']
       : ['80%', '0%'];
+    opacityValue = [0, 1];
   }
 
   return animejs({
     targets: [item],
     duration: 2000,
-    translateX: animValue,
+    translateX: translateValue,
+    opacity: opacityValue,
     easing: 'easeInOutCubic'
   });
 };
