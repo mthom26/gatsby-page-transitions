@@ -75,7 +75,7 @@ const Nav = () => {
           }
         }}
       >
-        Index
+        Home
       </TransitionLink>
       <TransitionLink
         to="/page-2"
@@ -100,7 +100,7 @@ const Nav = () => {
           }
         }}
       >
-        Page 2
+        About
       </TransitionLink>
       <TransitionLink
         to="/page-3"
@@ -125,7 +125,7 @@ const Nav = () => {
           }
         }}
       >
-        Page 3
+        Dates
       </TransitionLink>
     </nav>
   )
