@@ -6,6 +6,7 @@ import Nav from './Nav';
 import '../index.css';
 
 const Layout = ({ children, id }) => {
+  // console.log(`Render: ${id}`);
   return (
     <Fragment>
       <TransitionPortal level="bottom">
@@ -14,7 +15,7 @@ const Layout = ({ children, id }) => {
       <TransitionPortal level="middle">
         <div id={`layoutBgGradient-${id}`} className="layoutBgGradient"></div>
       </TransitionPortal>
-      <Nav />
+      <Nav id={id} />
       <div id={id} className="layout">
         {children}
       </div>
