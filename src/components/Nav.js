@@ -38,15 +38,8 @@ const getAnim = (item, bg, animData, animType) => {
 
   // Get animation for the background gradient
   let bgTranslateValue = [];
-  let from = '';
-  let to = '';
-  
-  if(animData.from === '1') { from = '0vw' }
-  else if(animData.from === '2') { from = '-100vw' }
-  else if(animData.from === '3') { from = '-200vw' }
-  if(animData.to === '1') { to = '0vw' }
-  else if(animData.to === '2') { to = '-100vw' }
-  else if(animData.to === '3') { to = '-200vw' }
+  const from = `-${animData.from}00vw`;
+  const to = `-${animData.to}00vw`;
 
   if(animType === 'exit') {
     bgTranslateValue = [from, to];
@@ -72,8 +65,8 @@ const Nav = ({ id }) => {
   return (
     <nav className="nav">
       <TransitionLink
-        to="/"
-        id="nav-1"
+        to="/about"
+        id="nav-0"
         className="navLink"
         exit={{
           length: TRANSITION_LEN,
@@ -95,8 +88,35 @@ const Nav = ({ id }) => {
           trigger: ({ node, e, exit, entry }) => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
-            const bg = document.querySelector(`#layoutBgGradient-page-1`);
+            const bg = document.querySelector('#layoutBgGradient-page-0');
             // Get animation data from state
+            const animData = entry.state.animData;
+            return getAnim(item, bg, animData, 'entry');
+          }
+        }}
+      >
+        About
+      </TransitionLink>
+      <TransitionLink
+        to="/"
+        id="nav-1"
+        className="navLink"
+        exit={{
+          length: TRANSITION_LEN,
+          trigger: ({ node, e, exit, entry }) => {
+            const item = node.querySelector('.layout');
+            const bg = document.querySelector(`#layoutBgGradient-${id}`);
+            const animData = getAnimData(e, item);
+            entry.state = { animData: animData };
+            return getAnim(item, bg, animData, 'exit');
+          }
+        }}
+        entry={{
+          delay: TRANSITION_DELAY,
+          length: TRANSITION_LEN,
+          trigger: ({ node, e, exit, entry }) => {
+            const item = node.querySelector('.layout');
+            const bg = document.querySelector('#layoutBgGradient-page-1');
             const animData = entry.state.animData;
             return getAnim(item, bg, animData, 'entry');
           }
@@ -105,7 +125,7 @@ const Nav = ({ id }) => {
         Home
       </TransitionLink>
       <TransitionLink
-        to="/page-2"
+        to="/contact"
         id="nav-2"
         className="navLink"
         exit={{
@@ -123,40 +143,13 @@ const Nav = ({ id }) => {
           length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
             const item = node.querySelector('.layout');
-            const bg = document.querySelector(`#layoutBgGradient-page-2`);
+            const bg = document.querySelector('#layoutBgGradient-page-2');
             const animData = entry.state.animData;
             return getAnim(item, bg, animData, 'entry');
           }
         }}
       >
-        About
-      </TransitionLink>
-      <TransitionLink
-        to="/page-3"
-        id="nav-3"
-        className="navLink"
-        exit={{
-          length: TRANSITION_LEN,
-          trigger: ({ node, e, exit, entry }) => {
-            const item = node.querySelector('.layout');
-            const bg = document.querySelector(`#layoutBgGradient-${id}`);
-            const animData = getAnimData(e, item);
-            entry.state = { animData: animData };
-            return getAnim(item, bg, animData, 'exit');
-          }
-        }}
-        entry={{
-          delay: TRANSITION_DELAY,
-          length: TRANSITION_LEN,
-          trigger: ({ node, e, exit, entry }) => {
-            const item = node.querySelector('.layout');
-            const bg = document.querySelector(`#layoutBgGradient-page-3`);
-            const animData = entry.state.animData;
-            return getAnim(item, bg, animData, 'entry');
-          }
-        }}
-      >
-        Dates
+        Contact
       </TransitionLink>
     </nav>
   )
