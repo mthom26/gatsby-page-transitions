@@ -33,7 +33,7 @@ hr {
 */ 
 #___gatsby {
   position: relative;
-  z-index: 1100;
+  z-index: 1150;
 }
 
 .nav {
@@ -68,11 +68,20 @@ hr {
 
 .layoutBackground {
   position: absolute;
-  background: url('./images/karina-carvalho-134501-unsplash.jpg');
+  background: url('./images/forrest-cavale-353-unsplash.jpg');
   background-size: cover;
   height: 100vh;
   width: 100vw;
   /* border: 1px solid yellow; */
+}
+
+.layoutBgGradient {
+  position: absolute;
+  background: linear-gradient(90deg, rgba(255,212,70,1) 0%, rgba(255,212,70,1) 33%, rgba(44,250,255,1) 35%, rgba(44,250,255,1) 64%, rgba(78,177,5,1) 66%, rgba(78,177,5,1) 100%);
+  opacity: 0.25;
+  height: 100vh;
+  width: 300vw;
+  border: 1px solid red;
 }
 
 .container {
@@ -89,5 +98,6 @@ hr {
 
 .tourDates {
   display: flex;
-  flex-direction: column;align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
 }

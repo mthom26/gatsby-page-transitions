@@ -57,6 +57,8 @@ const Nav = () => {
             // Get the child node so the entire Layout does not animate
             const item = node.querySelector('.layout');
             const animDir = getAnimDir(e, item);
+
+            const bg = node.querySelector('.layoutBgGradient');
             // Set the state on the entry so the entering page knows the correct
             // animation direction
             entry.state = { direction: animDir };

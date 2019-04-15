@@ -11,6 +11,9 @@ const Layout = ({ children, id }) => {
       <TransitionPortal level="bottom">
         <div className="layoutBackground"></div>
       </TransitionPortal>
+      <TransitionPortal level="middle">
+        <div id={`layoutBgGradient-${id}`} className="layoutBgGradient"></div>
+      </TransitionPortal>
       <Nav />
       <div id={id} className="layout">
         {children}
