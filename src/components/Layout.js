@@ -10,10 +10,8 @@ const Layout = ({ children, id }) => {
   return (
     <Fragment>
       <TransitionPortal level="bottom">
-        <div className="layoutBackground"></div>
-      </TransitionPortal>
-      <TransitionPortal level="middle">
         <div id={`layoutBgGradient-${id}`} className="layoutBgGradient"></div>
+        <div className="layoutBackground"></div>
       </TransitionPortal>
       <Nav id={id} />
       <div id={id} className="layout">
