@@ -9,14 +9,14 @@ const Layout = ({ children, id }) => {
   // console.log(`Render: ${id}`);
   return (
     <Fragment>
-      <TransitionPortal level="bottom">
-        <div id={`layoutBgGradient-${id}`} className="layoutBgGradient"></div>
-        <div className="layoutBackground"></div>
-      </TransitionPortal>
       <Nav id={id} />
       <div id={id} className="layout">
         {children}
       </div>
+      <TransitionPortal level="bottom">
+        <div id={`layoutBgGradient-${id}`} className="layoutBgGradient"></div>
+        <div className="layoutBackground"></div>
+      </TransitionPortal>
     </Fragment>
   )
 };
