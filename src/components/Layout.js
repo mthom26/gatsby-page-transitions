@@ -9,6 +9,9 @@ const Layout = ({ children, id }) => {
   // console.log(`Render: ${id}`);
   return (
     <Fragment>
+      {/* Switching this TransitionPortal to below the Nav and div will fix 
+          the weird css and layout problems when run after building.
+      */}
       <TransitionPortal level="bottom">
         <div id={`layoutBgGradient-${id}`} className="layoutBgGradient"></div>
         <div className="layoutBackground"></div>
