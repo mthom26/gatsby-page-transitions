@@ -52,6 +52,7 @@ h1 {
   justify-content: center;
   z-index: 1200;
   border-bottom: 1px solid #ffffff76;
+  background: #00000035;
 }
 
 .navLink {
@@ -62,6 +63,9 @@ h1 {
   opacity: 0.8;
 }
 .navLink:hover {
+  opacity: 1;
+}
+.navActive {
   opacity: 1;
 }
 
@@ -75,11 +79,20 @@ h1 {
 
 .layoutBackground {
   position: absolute;
-  background: url('./images/forrest-cavale-353-unsplash.jpg');
+  background: url('./images/federico-rizzarelli-1192275-unsplash.jpg');
   background-size: cover;
   height: 100vh;
   width: 100vw;
   z-index: 900;
+}
+
+.layoutBackground::after {
+  content: "";
+  position: absolute;
+  background: #00000055;
+  height: 100vh;
+  width: 100vw;
+  z-index: 950;
 }
 
 .layoutBgGradient {

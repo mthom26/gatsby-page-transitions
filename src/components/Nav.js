@@ -68,6 +68,7 @@ const Nav = ({ id }) => {
         to="/about"
         id="nav-0"
         className="navLink"
+        activeClassName="navActive"
         exit={{
           length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
@@ -101,6 +102,7 @@ const Nav = ({ id }) => {
         to="/"
         id="nav-1"
         className="navLink"
+        activeClassName="navActive"
         exit={{
           length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
@@ -128,6 +130,7 @@ const Nav = ({ id }) => {
         to="/contact"
         id="nav-2"
         className="navLink"
+        activeClassName="navActive"
         exit={{
           length: TRANSITION_LEN,
           trigger: ({ node, e, exit, entry }) => {
